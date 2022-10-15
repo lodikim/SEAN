@@ -120,11 +120,14 @@ class Ex(QWidget, Ui_Form):
 
         if self.obj_dic is not None:
             data_i['obj_dic'] = self.obj_dic
+            #print(data_i['obj_dic'])
+            #print('dict keys: ', self.obj_dic.keys())
+            #print('basename: ', os.path.basename(self.obj_dic[0]))
 
 
         generated = self.model(data_i, mode='UI_mode')
         generated_img = self.convert_output_image(generated)
-        qim = QImage(generated_img.data, generated_img.shape[1], generated_img.shape[0], QImage.Format_RGB888)
+        qim = QImage(generated_img.data.tobytes(), generated_img.shape[1], generated_img.shape[0], QImage.Format_RGB888)
 
 
         if len(self.result_scene.items()) > 0:
