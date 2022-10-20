@@ -55,6 +55,21 @@ def LabelToOnehot(Xt):
     one_hot_Xt_ = F.interpolate(one_hot_Xt_,(256,256))
     return one_hot_Xt_
 
+def LabelToOnehot_noInter(Xt):                                  # Xt: (h, w, 3)
+    Xt_ = torch.tensor(np.array(Xt)[:,:,0], dtype=torch.int64)  # Xt_: torch.Size([h, w])
+    h,w = Xt_.shape
+    Xt_ = torch.reshape(Xt_,(1,1,h,w))                          # Xt_: torch.Size([1, 1, h, w])
+    one_hot_Xt = torch.FloatTensor(1, 19, h, w).zero_()         # one_hot_Xt: torch.Size([1, 19, h, w])
+    one_hot_Xt_ = one_hot_Xt.scatter_(1, Xt_, 1.0)              # one_hot_Xt_: torch.Size([1, 19, h, w])
+    return one_hot_Xt_
+
+def OnehotToLabel(one_hot_Xt_):                                 # one_hot_Xt_: torch.Size([1, 19, h, w])
+    Xt_ = np.argmax(one_hot_Xt_, axis=1)                        # Xt_: torch.Size([1, h, w]), dtype=int64
+    Xt_ = Xt_[0]                                                # Xt_: torch.Size([h, w])
+    Xt = Xt_.unsqueeze(2)                                       # Xt: torch.Size([h, w, 1])
+    Xt = torch.repeat_interleave(Xt, 3, dim=2)                  # Xt: torch.Size([h, w, 3])
+    return Xt
+
 # img1 -> target
 # img2 -> source
 # inject source attribute to target

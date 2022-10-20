@@ -17,11 +17,11 @@ from data.base_dataset import get_params, get_transform
 ## python vis.py --name CelebA-HQ_pretrained --load_size 256 --crop_size 256 --dataset_mode custom --label_dir datasets/CelebA-HQ/test/labels --image_dir datasets/CelebA-HQ/test/images --label_nc 19 --no_instance --gpu_ids 0
 
 ### 
-source_image_name = "28000.jpg"     # Ex. "28000.jpg"
-source_label_name = "28000.png"     # Ex. "28000.png"
-target_image_name = "28004.jpg"     # Ex. "28083.jpg"
+source_image_name = "28002.jpg"     # Ex. "28000.jpg"
+source_label_name = "28002.png"     # Ex. "28000.png"
+target_image_name = "28002.jpg"     # Ex. "28083.jpg"
 swap_target = [4, 5]                # Ex. [4, 5]
-save_img_name = "swap_eyes"    # Ex. "test_swap_eyes"
+save_img_name = "28002_recon"    # Ex. "test_swap_eyes"
 ### 
 
 def input_style_codes(source_image_name, target_image_name, swap_target):

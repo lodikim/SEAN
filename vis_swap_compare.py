@@ -13,7 +13,7 @@ from data.base_dataset import get_params, get_transform
 from vis import visualize
 from vis2 import visualize2
 
-# A1 ~ A5의 이미지에 B의 style만 vs style+mask 빅 코드
+# A1 ~ A5의 이미지에 B의 style만 vs style+mask 비교 코드
 
 # 아래 실행 코드로 실행
 ## python vis_swap_compare.py --name CelebA-HQ_pretrained --load_size 256 --crop_size 256 --dataset_mode custom --label_dir datasets/CelebA-HQ/test/labels --image_dir datasets/CelebA-HQ/test/images --label_nc 19 --no_instance --gpu_ids 0
